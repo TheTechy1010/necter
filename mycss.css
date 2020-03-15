@@ -1,0 +1,6 @@
+.myellipse{
+    border-radius: 0px 200px 200px 200px;
+    -moz-border-radius: 0px 200px 200px 200px;
+    -webkit-border-radius: 0px 200px 200px 200px;
+    border: 0px solid #ffffff;
+}

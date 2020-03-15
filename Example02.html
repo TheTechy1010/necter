@@ -1,0 +1,27 @@
+<!DICTYPE html>
+<html>
+<head>
+ <title>Home Page</title>
+ <script type="text/javascript">
+ function substitute() {
+   var myvar =   document.getElementById('MytextBox').value;
+   if(myvar.length == 0){
+		alert('Please enter some value')
+return;		
+                       }
+var MyTitle = document.getElementById('title');
+MyTitle.innerHTML = myvar;
+}
+function DateTimeNow()
+            {
+              var dateTitle = document.getElementById('title');
+	      dateTitle.innerHTML = DateTime.Now.ToString("dd-MM-yyyy");
+            }
+</script>
+</head>
+<body>
+<h1 id="title">thepritish.com</h1>
+<input type="text" id="MytextBox"/>
+<input type="submit" value="Click me" onclick="substitute()"/>
+</body>
+</html>

@@ -1,0 +1,80 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    
+    <link rel="stylesheet" href="./Content/bootstrap.css">
+    <title>JQuery Test Page</title>
+  </head>
+  <body>
+      <div class="bg-primary p-3">
+          <h3 class="text-center text-white">Country API Test App</h3>
+      </div>
+    
+    
+      <div class="container p-5">
+        <div class="row">
+          <table id="dtable" class="table table-borderless table-hover">
+            <thead>
+              
+            </thead>
+            <tbody>
+              
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+      <input type="button" class="btn btn-block btn-danger" name="btnVeri" id="btnVeri" value="Ajax test" />
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="./Scripts/jquery-3.4.1.js"></script>
+    <script src="./Scripts/bootstrap.min.js"></script>
+    <script src="./Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <link href="./Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="./Content/DataTables/css/dataTables.bootstrap4.css" rel="stylesheet" />
+    <script src="./Scripts/DataTables/dataTables.bootstrap4.js"></script>
+    <script src="./Scripts/bootbox.min.js"></script>
+    <script>
+      $(document).ready(function(){
+       
+        var dialog = bootbox.dialog({
+    message: '<div align="center"><h6 id="count"></h6><img src="Dualring-1.gif" height="100px" width="100px" /><p class="text-center mb-0"><i class="fa fa-spin fa-cog"></i><h4> Please Wait...</h4></p></div>',
+    closeButton: false
+});
+$('#dtable').DataTable({
+          ajax:{
+            url:'https://restcountries.eu/rest/v2/all'
+          ,dataSrc:""},
+        columns:[
+          {
+            data:"name",
+            render:function(data,type,country){
+                return '<div class="bg-primary p-3 text-white">' + '<h4 href="">' + country.name + "</h4></div>" 
+                  +"<div class='bg-light p-3'><h4>Capital : "+country.capital+"</h4>"
+              +"<h5>Currency : "+country.currencies[0].name+"</h5>"
+              +"<h5>Region : "+country.region+"</h5>"
+              +"<h5>Calling Code : "+country.callingCodes+"</h5>"
+              +"<h5>Alternate Spellings : "+country.altSpellings[1]+"</h5>"
+              +"<h6>Time Zone : "+country.timezones[0]+"</h6></div>"
+              ;}
+            },
+            
+        ]
+        });     
+        $('.form-control-sm').addClass('form-control-lg').attr({style:"width:400px"});   
+        $('#dtable_length').attr({style:"width:400px"});   
+        $('.dataTables_wrapper .dataTables_paginate .paginate_button:hover').attr({"background-color":"cornflowerblue"});
+// do something in the background
+setTimeout(function() {
+    // that's enough of that
+    bootbox.hideAll();
+}, 3000);
+      });
+    </script>
+  </body>
+</html>
